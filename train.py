@@ -73,6 +73,15 @@ def main():
 
     accuracy = model.score(x_test, y_test)
     run.log("Accuracy", np.float(accuracy))
+    output_dir = './outputs'
+    os.makedirs(output_dir, exist_ok=True)
+
+    model_filename = 'model.pkl'
+    model_path = os.path.join(output_dir, model_filename)
+
+    print(f"Saving model to {model_path}")
+    joblib.dump(value=model, filename=model_path)
+    print("Model saved successfully in outputs folder.")
 
 
 if __name__ == '__main__':
